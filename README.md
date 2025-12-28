@@ -1,12 +1,25 @@
+**21070006001 Ahmet Kemal Biliciler**
+
 # Bill Payment Chatbot - Frontend
 
-Bu proje, **AI destekli fatura ödeme chatbot sistemi** için React frontend uygulamasıdır. Üniversite dönem projesi olarak geliştirilmiştir.
+Bu proje, **AI destekli fatura ödeme chatbot sistemi** için React frontend uygulamasıdır. 
 
-## 🎯 Proje Hakkında
+##  Project Links
+
+| Link | URL |
+|------|-----|
+| **Frontend Source** | https://github.com/ahmetkemalbiliciler/client |
+| **Backend Source** | https://github.com/ahmetkemalbiliciler/gateway |
+| **Video Presentation** | [Google Drive](https://drive.google.com/file/d/1XXkXrfdhcC1uCRPc-DCDKp2_nWDKHDlW/view?usp=sharing) |
+| **Live Demo (Frontend)** | https://client-pq7g.onrender.com/ |
+| **Live Demo (Backend)** | https://gateway-77vi.onrender.com/ |
+| **API Docs (Swagger)** | https://midterm4458.onrender.com/api-docs/ |
+
+##  Proje Hakkında
 
 Kullanıcıların doğal dil kullanarak fatura sorgulama ve ödeme yapmasını sağlayan bir chat arayüzüdür.
 
-## 🏗️ Mimari Tasarım (Design)
+##  Mimari Tasarım (Design)
 
 ```
 client/
@@ -27,35 +40,15 @@ client/
 - **Vite**: Create React App yerine Vite tercih ettik çünkü daha hızlı, modern ve daha az konfigürasyon gerektiriyor
 - **Tailwind CSS**: Hızlı styling için utility-first yaklaşım
 
-## 🤔 Varsayımlar (Assumptions)
+## Varsayımlar (Assumptions)
 
 1. **Tek Sayfa Uygulama**: Routing gerekmiyor, sadece chat ekranı var
-2. **Backend Localhost**: Development'ta backend `localhost:3000`'de çalışıyor varsaydık
-3. **Modern Tarayıcı**: ES6+ destekleyen tarayıcı kullanılıyor
-4. **Mobil Uyumluluk**: Responsive tasarım yaptık ama öncelik desktop'ta
 
-## ⚠️ Karşılaşılan Sorunlar (Issues Encountered)
+## Karşılaşılan Sorunlar (Issues Encountered)
 
-1. **Auto-scroll**: Yeni mesaj geldiğinde chat'in otomatik aşağı kayması gerekiyordu:
-   ```javascript
-   useEffect(() => {
-       messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-   }, [messages]);
-   ```
-   İlk başta `useRef` kullanmayı unuttuk, DOM manipulation ile uğraştık.
+1. **Loading State**: Backend yavaş yanıt verdiğinde kullanıcı butona birden fazla basabiliyordu. `loading` state ekleyip butonu disable ettik.
 
-2. **Loading State**: Backend yavaş yanıt verdiğinde kullanıcı butona birden fazla basabiliyordu. `loading` state ekleyip butonu disable ettik.
-
-3. **CORS Hataları**: İlk başta backend'de CORS açık değildi, `Access-Control-Allow-Origin` hatası aldık. Backend'e `cors` middleware ekledik.
-
-4. **Boş Mesaj Gönderimi**: Kullanıcı boşluk tuşuyla boş mesaj gönderebiliyordu:
-   ```javascript
-   if (!input.trim()) return;
-   ```
-
-5. **Tailwind Purge**: Production build'de bazı class'lar kayboluyordu. `tailwind.config.js`'de content path'lerini doğru ayarlamamıştık.
-
-## 🚀 Kurulum
+## Kurulum
 
 ```bash
 # Bağımlılıkları yükle
@@ -66,26 +59,13 @@ npm run dev
 
 # Production build
 npm run build
-
-# Build preview
-npm run preview
 ```
 
-## 🔧 Konfigürasyon
+## Environment Variables
 
-Backend URL'ini değiştirmek için `src/services/api.js` dosyasını düzenleyin:
-```javascript
-const API_URL = 'http://localhost:3000'; // Backend adresi
 ```
-
-## 📱 Özellikler
-
-- ✅ Gerçek zamanlı chat arayüzü
-- ✅ Mesaj geçmişi
-- ✅ Loading indicator (yazıyor animasyonu)
-- ✅ Responsive tasarım
-- ✅ Hata yönetimi
+VITE_BACKEND_URL=https://your-backend-url.com/api
+```
 
 ---
 
-*Geliştirici: Bilgisayar Mühendisliği Öğrencisi | Dönem Projesi 2024*
