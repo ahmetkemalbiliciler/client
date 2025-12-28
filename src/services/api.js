@@ -1,8 +1,10 @@
 import axios from 'axios';
 
 
-const API_URL = process.env.BACKEND_URL;
+const API_URL = import.meta.env.VITE_BACKEND_URL;
+
 const api = axios.create({
+    baseURL: API_URL,
 });
 
 export const sendMessage = async (message) => {
